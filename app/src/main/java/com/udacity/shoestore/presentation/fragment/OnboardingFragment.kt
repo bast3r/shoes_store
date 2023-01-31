@@ -26,7 +26,7 @@ class OnboardingFragment : Fragment() {
             inflater,
             R.layout.onboarding_fragment,
             container,
-            true
+            false
         )
 
         return binding.root

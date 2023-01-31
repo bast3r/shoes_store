@@ -16,7 +16,19 @@
     <string name="onboarding_main_text">Приложение из нескольких экранов - список обуви и добавление нового товара в список</string>
     <string name="onboarding_functions">Основные функции приложения</string>
     <string name="onboarding_description">1. Просмотр списка обуви\n2. Создание нового товара\n3. Сохранение информации о бренде обуви, названии модели, размере и краткое описание</string>
-    <string name="welcome_header">Добро пожаловать в приложение Shoe Store</string>
+    <string name="welcome_header">%s, Добро пожаловать в приложение Shoe Store</string>
     <string name="welcome_main_text">При нажатии на кнопку Продолжить вы перейдете на экран описания основных функций приложения</string>
     <string name="logout">Выход</string>
+    <string name="please_check_data">Пожалуйста, проверьте введенные данные!</string>
+    <string name="login_cant_be_empy">Логин не может быть пустым</string>
+    <string name="email_is_incorrect">E-mail введен неверно</string>
+    <string name="password_cant_be_empty">Пароль не может быть пустым</string>
+    <string name="password_should_have_six_symbols">Пароль не может быть короче 6 символов</string>
+    <string name="welcome_fragment_title">Приветствие</string>
+    <string name="shoe_detail_fragment_title">Детали товара</string>
+    <string name="shoe_list_fragment_title">Список товаров</string>
+    <string name="onboarding_fragment_title">Обучение</string>
+    <string name="authorization_fragment_title">Авторизация</string>
+    <string name="save_is_successful">Описание товара успешно сохранено</string>
+    <string name="authotization_error">Ошибка авторизации, пожалуйста, проверьте свои данные</string>
 </resources>
