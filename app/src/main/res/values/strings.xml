@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <string name="write_login">Введите логин</string>
+    <string name="login_hint">example@mail.com</string>
+    <string name="write_password">Введите пароль</string>
+    <string name="sign_in">Авторизоваться</string>
+    <string name="sign_up">Зарегистрироваться и войти</string>
+    <string name="_continue">Продолжить</string>
+    <string name="shoe_detail_company">Название компании</string>
+    <string name="shoe_detail_name">Название модели</string>
+    <string name="shoe_detail_size">Размер обуви</string>
+    <string name="shoe_detail_description">Описание</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="onboarding_header">Shoe Store - приложение для учета обуви</string>
+    <string name="onboarding_main_text">Приложение из нескольких экранов - список обуви и добавление нового товара в список</string>
+    <string name="onboarding_functions">Основные функции приложения</string>
+    <string name="onboarding_description">1. Просмотр списка обуви\n2. Создание нового товара\n3. Сохранение информации о бренде обуви, названии модели, размере и краткое описание</string>
+    <string name="welcome_header">Добро пожаловать в приложение Shoe Store</string>
+    <string name="welcome_main_text">При нажатии на кнопку Продолжить вы перейдете на экран описания основных функций приложения</string>
+    <string name="logout">Выход</string>
 </resources>
