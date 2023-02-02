@@ -31,4 +31,9 @@
     <string name="authorization_fragment_title">Авторизация</string>
     <string name="save_is_successful">Описание товара успешно сохранено</string>
     <string name="authotization_error">Ошибка авторизации, пожалуйста, проверьте свои данные</string>
+    <string name="msg_fill_shoe_name">Заполните название модели!</string>
+    <string name="msg_fill_shoe_brand">Заполните название компании!</string>
+    <string name="msg_fill_shoe_description">Заполните краткое описание!</string>
+    <string name="msg_fill_shoe_size">Заполните размер!</string>
+    <string name="msg_fill_shoe_size_correct">Некорректно указан размер!</string>
 </resources>

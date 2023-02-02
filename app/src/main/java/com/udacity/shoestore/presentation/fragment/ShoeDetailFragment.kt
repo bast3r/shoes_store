@@ -1,13 +1,14 @@
 package com.udacity.shoestore.presentation.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.view.Menu
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,7 +16,6 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
 import com.udacity.shoestore.domain.models.Shoe
 import com.udacity.shoestore.presentation.viewmodel.ShoeStoreViewModel
-import java.lang.RuntimeException
 
 
 class ShoeDetailFragment : Fragment() {
@@ -27,8 +27,14 @@ class ShoeDetailFragment : Fragment() {
     private val shoeViewModel: ShoeStoreViewModel by activityViewModels()
 
     private val args: ShoeDetailFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
     }
 
     override fun onCreateView(
@@ -48,19 +54,11 @@ class ShoeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val toolbar = (activity as? MainActivity)?.toolbar
-//        setSupportActionBar(toolbar)
-//        val actionBar = supportActionBar
-//        actionBar?.setDisplayHomeAsUpEnabled(true)
-
         args.shoeDetail?.let { shoeViewModel.loadShoeDetail(it) }
 
         shoeViewModel.shoeDetail.observe(viewLifecycleOwner) {
             val isReview = it?.let { shoe ->
-                binding.shoeDetailCompany.setText(shoe.company)
-                binding.shoeDetailName.setText(shoe.name)
-                binding.shoeDetailDescription.setText(shoe.description)
-                binding.shoeDetailSize.setText("${shoe.size}")
+                binding.shoeDetail = shoe
                 true
             } ?: false
 
@@ -84,11 +82,37 @@ class ShoeDetailFragment : Fragment() {
         binding.shoeDetailCancelButton.setOnClickListener {
             findNavController().popBackStack()
         }
-
     }
 
     private fun validateForm(): Boolean {
         var isValid = true
+        val nameEditView = binding.shoeDetailName.apply { error = null }
+        val companyEditView = binding.shoeDetailCompany.apply { error = null }
+        val descriptionEditView = binding.shoeDetailDescription.apply { error = null }
+        val sizeEditView = binding.shoeDetailSize.apply { error = null }
+
+        if (nameEditView.text.isNullOrEmpty()) {
+            nameEditView.error = getString(R.string.msg_fill_shoe_name)
+            isValid = false
+        }
+        if (companyEditView.text.isNullOrEmpty()) {
+            companyEditView.error = getString(R.string.msg_fill_shoe_brand)
+            isValid = false
+        }
+        if (descriptionEditView.text.isNullOrEmpty()) {
+            descriptionEditView.error = getString(R.string.msg_fill_shoe_description)
+            isValid = false
+        }
+        if (sizeEditView.text.isNullOrEmpty()) {
+            sizeEditView.error = getString(R.string.msg_fill_shoe_size)
+            isValid = false
+        } else {
+            val size = sizeEditView.text.toString().toDouble()
+            if (size < 25 || size > 55) {
+                sizeEditView.error = getString(R.string.msg_fill_shoe_size_correct)
+                isValid = false
+            }
+        }
 
         return isValid
     }

@@ -75,11 +75,7 @@ class ShoesListFragment : Fragment() {
         binding.shoesListContainer.addView(
             item.root
         )
-        item.shoeItemCompany.text = shoe.company
-        item.shoeItemName.text = shoe.name
-        item.shoeItemSize.text = "${shoe.size}"
-        item.shoeItemDescription.text = shoe.description
-
+        item.shoeItem = shoe
         item.root.setOnClickListener {
             findNavController().navigate(
                 ShoesListFragmentDirections.shoesListFragmentToShoeDetailFragment(shoe)

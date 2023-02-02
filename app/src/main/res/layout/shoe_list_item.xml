@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="shoeItem"
+            type="com.udacity.shoestore.domain.models.Shoe" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -18,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             style="@style/TextAppearance.AppCompat.Body1"
+            android:text="@{shoeItem.company}"
             app:layout_constraintBottom_toTopOf="@+id/shoe_item_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Headline"
+            android:text="@{shoeItem.name}"
             app:layout_constraintBottom_toTopOf="@+id/shoe_item_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoe_item_company"
@@ -40,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:lines="3"
+            android:text="@{shoeItem.description}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoe_item_name"
@@ -50,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Large"
+            app:shoeSize="@{shoeItem.size}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="44" />

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -24,6 +25,11 @@ class SignUpFragment: Fragment() {
 
     private val userRepository: UserRepository by lazy { UserRepositoryImpl(requireContext()) }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,6 +43,10 @@ class SignUpFragment: Fragment() {
         )
 
         return binding.root
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,7 +63,7 @@ class SignUpFragment: Fragment() {
     private fun navigateToWelcomeScreen(isNewUser: Boolean) {
         if (validateForm()) {
             val login = binding.signUpLoginEdittext.text.toString()
-            val password = binding.signUpLoginEdittext.text.toString()
+            val password = binding.signUpPasswordEdittext.text.toString()
             val user = User(login = login, password = password)
 
             val isSignedIn = if (isNewUser) {
@@ -71,8 +81,7 @@ class SignUpFragment: Fragment() {
                 )
             } else {
                 AlertDialog.Builder(context)
-//                    .create()
-                    .setTitle(R.string.authotization_error)
+                    .setMessage(R.string.authotization_error)
                     .create()
                     .show()
             }
@@ -93,7 +102,7 @@ class SignUpFragment: Fragment() {
             loginField.error = getString(R.string.login_cant_be_empy)
         }
         val email = loginField.text.toString()
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             isValid = false
             loginField.error = getString(R.string.email_is_incorrect)
         }
