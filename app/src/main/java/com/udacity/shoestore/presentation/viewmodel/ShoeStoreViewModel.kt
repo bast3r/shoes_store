@@ -31,4 +31,8 @@ class ShoeStoreViewModel: ViewModel() {
         super.onCleared()
         _shoeDetail.value = null
     }
+
+    fun clearData() {
+        _shoeDetail.value = null
+    }
 }

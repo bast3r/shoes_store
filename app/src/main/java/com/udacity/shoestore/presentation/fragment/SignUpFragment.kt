@@ -92,10 +92,8 @@ class SignUpFragment: Fragment() {
 
     private fun validateForm(): Boolean {
         var isValid = true
-        val loginField = binding.signUpLoginEdittext
-        val passwordField = binding.signUpPasswordEdittext
-        loginField.error = null
-        passwordField.error = null
+        val loginField = binding.signUpLoginEdittext.apply { error = null }
+        val passwordField = binding.signUpPasswordEdittext.apply { error = null }
 
         if (loginField.text.isNullOrEmpty()) {
             isValid = false
